@@ -10,11 +10,11 @@ words ={
     "i" : "من",
     "am" : "هستم"
 }
-
 sentence ="i am young boy"
 word_list =sentence.lower().split()
 
-translate =[]
+translate = []
+
 for word in word_list:
     if word in words:
         translate.append(words[word])
@@ -22,7 +22,14 @@ for word in word_list:
         translate.append(f"[{word}]")
 print(" ".join(translate))
 
-translate_count =len(word_list) - sum(1 for word in word_list if word not in words)
-untranslate_count =len(word_list) - translate_count
-print("translateed: ", translate_count)
+translate_count = 0
+untranslate_count = 0
+
+for word in word_list:
+    if word in words:
+        translate_count = translate_count + 1
+    else:
+        untranslate_count = untranslate_count + 1
+
+print("translated: ", translate_count)
 print("untranslate: ", untranslate_count)
